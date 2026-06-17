@@ -180,14 +180,14 @@ export default function App() {
     );
   }
 
-  // ----------------------------------------------------
-  // VIEW 3: Dedicated User Screen (Elysium AI Twin UI)
+// ----------------------------------------------------
+  // VIEW 3: Dedicated User Screen (Elysium AI Twin UI - Sticked Bottom)
   // ----------------------------------------------------
   if (currentView === "user") {
     return (
-      <div className="main-container">
+      <div className="main-container text-to-text-layout">
         <div className="gradient-glow"></div>
-        <div className="chat-layout">
+        <div className="chat-layout layout-full-stretch">
           
           {/* Header Layout */}
           <header className="header">
@@ -204,8 +204,8 @@ export default function App() {
             </div>
           </header>
 
-          {/* Main Chat Area */}
-          <main className="chat-container">
+          {/* Main Chat Area - Expanded to push footer down */}
+          <main className="chat-container custom-chat-scroller">
             <div className="chat-messages">
               {messages.length === 0 ? (
                 <div className="welcome-message">
@@ -242,8 +242,8 @@ export default function App() {
             </div>
           </main>
 
-          {/* Input Form with Elysium CSS Compatibility */}
-          <footer className="chat-footer">
+          {/* Input Form Sticked to Bottom */}
+          <footer className="chat-footer absolute-bottom-footer">
             <div className="input-form">
               <input 
                 type="text" 
@@ -262,7 +262,7 @@ export default function App() {
                 Send
               </button>
             </div>
-            <p className="footer-disclaimer" style={{ textAlign: "center", color: "var(--text-gray-500)", fontSize: "11px", marginTop: "8px" }}>
+            <p className="footer-disclaimer" style={{ textAlign: "center", color: "var(--text-gray-500)", fontSize: "11px", marginTop: "8px", width: "100%" }}>
               AI may display inaccurate info, so double-check its responses.
             </p>
           </footer>

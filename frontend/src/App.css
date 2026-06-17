@@ -552,3 +552,32 @@ body {
   color: transparent;
   font-weight: 700;
 }
+/* --- Bottom Sticky Chat Alignment --- */
+.text-to-text-layout {
+  height: 100vh !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-full-stretch {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.custom-chat-scroller {
+  flex: 1 1 auto !important; /* Forces the chat messages container to occupy all available vertical space */
+  overflow-y: auto;
+  padding-bottom: 120px; /* Prevents text elements from getting cut off behind the sticky input bar */
+}
+
+.absolute-bottom-footer {
+  position: fixed !important;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-black) !important;
+  padding-bottom: 1.5rem !important;
+  z-index: 40;
+}
