@@ -25,13 +25,15 @@ export default function App() {
     if (!file) return;
 
     setSelectedFile(file);
-    setUploadStatus("Uploading & Indexing into ChromaDB...");
+    // 🛠️ Updated Log: Showing FAISS indexing layer accurately
+    setUploadStatus("Uploading & Indexing into Local FAISS Space...");
 
     const formData = new FormData();
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://localhost:5000/api/admin/upload", {
+      // 🎯 Fixed API Path: Target mapped directly to /api/admin/upload_pdf
+      const response = await fetch("http://localhost:5000/api/admin/upload_pdf", {
         method: "POST",
         body: formData,
       });
@@ -56,7 +58,8 @@ export default function App() {
     setChatLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/user/chat", {
+      // 🎯 Fixed API Path: Target mapped directly to /api/user/query
+      const response = await fetch("http://localhost:5000/api/user/query", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: userQuery }),
@@ -147,7 +150,7 @@ export default function App() {
           <div className="bg-gray-900/30 border border-gray-800 rounded-2xl p-8 backdrop-blur-md mt-10">
             <h3 className="text-lg font-semibold text-gray-200 mb-2">Feed Corporate Rulebooks</h3>
             <p className="text-sm text-gray-400 mb-6">
-              Upload company support guidelines (.pdf, .docx, .txt). The system will automatically chunk and save text embeddings into ChromaDB vector database layer.
+              Upload company support guidelines (.pdf, .docx, .txt). The system will automatically chunk and save text embeddings into local FAISS vector database layer.
             </p>
 
             <div 
@@ -180,7 +183,7 @@ export default function App() {
     );
   }
 
-// ----------------------------------------------------
+  // ----------------------------------------------------
   // VIEW 3: Dedicated User Screen (Elysium AI Twin UI - Sticked Bottom)
   // ----------------------------------------------------
   if (currentView === "user") {

@@ -14,7 +14,7 @@ FAISS_DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data"
 # Embedding model loaded
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
-@admin_bp.route("/api/admin/upload_pdf", methods=["POST"])
+@admin_bp.route("/upload_pdf", methods=["POST"])
 def upload_rulebook():
     if 'file' not in request.files:
         return jsonify({"error": "No file part in the request"}), 400
